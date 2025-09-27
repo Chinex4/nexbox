@@ -1,12 +1,79 @@
+// src/app/navigation/RootNavigator.tsx
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { View, Text } from "react-native";
 import HomeScreen from "../../screens/HomeScreen";
+import SearchScreen from "../../screens/SearchScreen";
+import MovieDetailScreen from "../../screens/MoviewDetailScreen";
+import Ionicons from "@expo/vector-icons/Ionicons";
 
 export type RootStackParamList = {
-  Home: undefined;
+  Tabs: undefined;
+  MovieDetail: { id: number; title?: string };
 };
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
+const Tab = createBottomTabNavigator();
+
+function WatchlistScreen() {
+  return (
+    <View
+      style={{
+        flex: 1,
+        backgroundColor: "#242A32",
+        alignItems: "center",
+        justifyContent: "center",
+      }}
+    >
+      <Text style={{ color: "#fff" }}>Watchlist (coming soon)</Text>
+    </View>
+  );
+}
+
+function Tabs() {
+  return (
+    <Tab.Navigator
+      screenOptions={{
+        headerShown: false,
+        tabBarStyle: { backgroundColor: "#242A32", borderTopColor: "#1b2027" },
+        tabBarActiveTintColor: "#ffffff",
+        tabBarInactiveTintColor: "#9aa4b2",
+      }}
+    >
+      <Tab.Screen
+        name="HomeTab"
+        component={HomeScreen}
+        options={{
+          title: "Home",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="home-outline" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Search"
+        component={SearchScreen}
+        options={{
+          title: "Search",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="search" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Watchlist"
+        component={WatchlistScreen}
+        options={{
+          title: "Watch list",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="bookmark-outline" color={color} size={size} />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
 
 export default function RootNavigator() {
   return (
@@ -16,7 +83,8 @@ export default function RootNavigator() {
         contentStyle: { backgroundColor: "#242A32" },
       }}
     >
-      <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Screen name="Tabs" component={Tabs} />
+      <Stack.Screen name="MovieDetail" component={MovieDetailScreen} />
     </Stack.Navigator>
   );
 }
