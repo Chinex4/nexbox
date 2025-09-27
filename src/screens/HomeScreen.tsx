@@ -127,12 +127,14 @@ export default function HomeScreen() {
             </View>
           }
           renderItem={({ item }) => (
-            <MovieCard
-              movie={item}
-              onPress={() =>
-                nav.navigate("MovieDetail", { id: item.id, title: item.title })
-              }
-            />
+            <View style={styles.cardCol}>
+              <MovieCard
+                movie={item}
+                onPress={() =>
+                  nav.navigate("MovieDetail", { id: item.id, title: item.title })
+                }
+              />
+            </View>
           )}
         />
       </View>
@@ -148,6 +150,7 @@ const styles = StyleSheet.create({
   },
   title: { color: "#fff", fontWeight: "800", fontSize: 22, marginBottom: 12 },
   catList: { marginTop: 16, paddingLeft: 16 },
+  cardCol: { width: "48%", marginBottom: 16 },
   catPill: {
     paddingHorizontal: 12,
     height: 32,

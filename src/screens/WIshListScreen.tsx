@@ -45,7 +45,7 @@ export default function WishlistScreen() {
           <Text style={styles.empty}>No saved movies yet.</Text>
         }
         renderItem={({ item }) => (
-          <View style={styles.cardWrap}>
+          <View style={styles.cardCol}>
             <MovieCard
               movie={item}
               onPress={() =>
@@ -89,9 +89,10 @@ const styles = StyleSheet.create({
   },
   clearText: { color: "#c8d0d9", fontWeight: "700", fontSize: 12 },
   content: { paddingHorizontal: 16, paddingTop: 16, paddingBottom: 20 },
+  cardCol: { width: "48%", marginBottom: 16 },
   row: { justifyContent: "space-between" },
   empty: { color: "#9aa4b2", marginTop: 40, textAlign: "center" },
-  cardWrap: { marginBottom: 12, width: "48%" },
+  cardWrap: { marginBottom: 12 },
   removeBtn: {
     marginTop: 8,
     height: 32,
