@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "nexbox",
+    "name": "NexBox",
     "slug": "nexbox",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/images/logo.png",
     "userInterfaceStyle": "light",
     "newArchEnabled": true,
     "splash": {
@@ -17,8 +17,8 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
+        "foregroundImage": "./assets/images/logo.png",
+        "backgroundColor": "#242A32"
       },
       "edgeToEdgeEnabled": true,
       "predictiveBackGestureEnabled": false

@@ -1,6 +1,5 @@
-// src/screens/SearchScreen.tsx
 import React from "react";
-import { View, Text, FlatList } from "react-native";
+import { View, Text, FlatList, StyleSheet, Platform } from "react-native";
 import SearchBar from "../components/SearchBar";
 import { useAppDispatch, useAppSelector } from "../app/store/hooks";
 import { fetchSearch, clearSearch } from "../app/store/slices/movies.slice";
@@ -23,14 +22,14 @@ export default function SearchScreen() {
   const data = search.data?.results ?? [];
 
   return (
-    <View style={{ flex: 1, backgroundColor: "#242A32", padding: 16 }}>
+    <View style={styles.container}>
       <SearchBar initial={search.query} onSubmit={handleSubmit} />
       <FlatList
-        style={{ marginTop: 16 }}
+        style={styles.list}
         data={data}
         keyExtractor={(it) => it.id.toString()}
         numColumns={2}
-        columnWrapperStyle={{ justifyContent: "space-between" }}
+        columnWrapperStyle={styles.gridRow}
         renderItem={({ item }) => (
           <MovieCard
             movie={item}
@@ -40,11 +39,21 @@ export default function SearchScreen() {
           />
         )}
         ListEmptyComponent={
-          <Text style={{ color: "#9aa4b2", marginTop: 24 }}>
-            Try searching for a movie.
-          </Text>
+          <Text style={styles.empty}>Try searching for a movie.</Text>
         }
       />
     </View>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#242A32",
+    padding: 16,
+    paddingTop: Platform.select({ ios: 70, android: 50 }),
+  },
+  list: { marginTop: 16 },
+  gridRow: { justifyContent: "space-between" },
+  empty: { color: "#9aa4b2", marginTop: 24 },
+});

@@ -6,6 +6,7 @@ import { View, Text } from "react-native";
 import HomeScreen from "../../screens/HomeScreen";
 import SearchScreen from "../../screens/SearchScreen";
 import MovieDetailScreen from "../../screens/MoviewDetailScreen";
+import WishlistScreen from "../../screens/WIshListScreen";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 export type RootStackParamList = {
@@ -16,20 +17,7 @@ export type RootStackParamList = {
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
 
-function WatchlistScreen() {
-  return (
-    <View
-      style={{
-        flex: 1,
-        backgroundColor: "#242A32",
-        alignItems: "center",
-        justifyContent: "center",
-      }}
-    >
-      <Text style={{ color: "#fff" }}>Watchlist (coming soon)</Text>
-    </View>
-  );
-}
+
 
 function Tabs() {
   return (
@@ -63,7 +51,7 @@ function Tabs() {
       />
       <Tab.Screen
         name="Watchlist"
-        component={WatchlistScreen}
+        component={WishlistScreen}
         options={{
           title: "Watch list",
           tabBarIcon: ({ color, size }) => (
