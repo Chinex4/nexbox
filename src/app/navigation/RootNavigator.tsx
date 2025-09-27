@@ -1,8 +1,6 @@
-// src/app/navigation/RootNavigator.tsx
 import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { View, Text } from "react-native";
 import HomeScreen from "../../screens/HomeScreen";
 import SearchScreen from "../../screens/SearchScreen";
 import MovieDetailScreen from "../../screens/MoviewDetailScreen";
